@@ -1,4 +1,4 @@
-export default (type = 'grid', mediaQuery = '') => {
+export default ({ type = 'grid', mediaQuery = '' } = {}) => {
   const wrapper = document.createElement('div');
   const selectedString = value => type === value ? 'selected' : '';
   wrapper.className = 'grouped';

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="index.css">
-  <title>Duel Settings Editor</title>
+  <title>Duel Gallery Config Editor</title>
 </head>
 <body>
-  <h2>Duel Settings Editor</h2>
+  <h2>Duel Gallery Config Editor</h2>
   <main>
     <article class="columns">
       <section>
@@ -143,6 +143,25 @@
           <button id="new-layout-style">New layout style</button>
         </div>
       </section>
+      <section>
+        <div class="input" id="layout-rules">
+          <label>Advanced layout rules</label>
+          <div class="tabs">
+            <span class="active" data-key="grid">Grid</span>
+            <span data-key="list">List</span>
+            <span data-key="carousel">Carousel</span>
+          </div>
+          <div class="tab-content">
+            <div class="active" data-key="grid"></div>
+            <div data-key="list"></div>
+            <div data-key="carousel"></div>
+            <button id="new-layout-rule">New layout rule</button>
+          </div>
+        </div>
+      </section>
+    </article>
+    <article class="bottom-controls">
+      <button>Generate gallery configuration</button>
     </article>
   </main>
   <script src="index.js"></script>

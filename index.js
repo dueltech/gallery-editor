@@ -1,3 +1,4 @@
+import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
 
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
@@ -33,6 +34,40 @@ const watchEntriesSelect = (el) => {
   });
 };
 
+const checkTabs = () => {
+  const layoutStyle = document.getElementById('layoutStyle');
+  const layoutRules = document.getElementById('layout-rules');
+  const tabsContainer = layoutRules.querySelector('.tabs');
+  const tabContents = layoutRules.querySelectorAll('.tab-content > div');
+  if (!layoutStyle || layoutStyle.value === 'none') {
+    layoutRules.style.display = 'none';
+  } else if (layoutStyle.value !== 'dynamic') {
+    layoutRules.style.display = 'block';
+    tabsContainer.style.display = 'none';
+    tabContents.forEach((c) => { c.classList.remove('active'); });
+    const tabContent = Array.from(tabContents).find(c => layoutStyle.value === c.dataset.key);
+    tabContent.classList.add('active');
+  } else {
+    layoutRules.style.display = 'block';
+    tabsContainer.style.display = 'flex';
+  }
+};
+
+const watchTabNavigation = () => {
+  const tabButtons = document.querySelectorAll('#layout-rules .tabs > span');
+  const tabContents = document.querySelectorAll('#layout-rules .tab-content > div');
+  tabButtons.forEach((tabButton) => {
+    tabButton.addEventListener('click', () => {
+      // remove "active" class from all tab buttons and contents
+      tabButtons.forEach((b) => { b.classList.remove('active'); });
+      tabContents.forEach((c) => { c.classList.remove('active'); });
+      tabButton.classList.add('active');
+      const tabContent = Array.from(tabContents).find(c => tabButton.dataset.key === c.dataset.key);
+      tabContent.classList.add('active');
+    });
+  });
+};
+
 const watchLayoutSelect = (el) => {
   const inputs = ['rows', 'columns'];
   const updateDisplays = (select) => {
@@ -58,6 +93,7 @@ const watchLayoutSelect = (el) => {
   updateDisplays(el);
   el.addEventListener('change', ({ target }) => {
     updateDisplays(target);
+    checkTabs();
   });
 };
 
@@ -69,12 +105,20 @@ const init = () => {
   });
   // display count input based on selected value for "Displayed Entries"
   watchEntriesSelect(document.getElementById('entries'));
-  // display rows/columns inputs based on selected value for "Layout Style"
-  watchLayoutSelect(document.getElementById('layoutStyle'));
-  // add layout style rule on click
+  // add layout style on click
   document.getElementById('new-layout-style').addEventListener('click', () => {
     document.getElementById('layout-styles').appendChild(createLayoutStyle());
   });
+  // tab navigation
+  checkTabs();
+  watchTabNavigation();
+  // add layout rule on click
+  document.getElementById('new-layout-rule').addEventListener('click', () => {
+    const activeTab = document.querySelector('.tab-content .active');
+    activeTab.appendChild(createLayoutRule(activeTab.dataset.key));
+  });
+  // display rows/columns inputs based on selected value for "Layout Style"
+  watchLayoutSelect(document.getElementById('layoutStyle'));
 };
 
 init();
