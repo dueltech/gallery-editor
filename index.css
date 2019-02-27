@@ -91,12 +91,12 @@ input[type="number"] {
 }
 
 input[type="color"] {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.6rem;
+  height: 1.6rem;
   border-left: none;
-  padding: .5rem;
+  padding: .3rem;
   cursor: pointer;
-  box-sizing: unset;
+  box-sizing: content-box;
 }
 
 button {
