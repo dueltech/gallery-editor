@@ -9,22 +9,51 @@
 </head>
 <body>
   <h2>Duel Settings Editor</h2>
-  <div class="basic-group">
-    <div class="input">
-      <label for="bgColor">Foreground color</label>
-      <div class="color-picker">
-        <input type="text" placeholder="auto" name="bgColor" data-key="bgColor">
-        <input type="color" name="bgColorPicker">
+  <main>
+    <section>
+      <div class="input">
+        <label for="entries">Displayed Entries</label>
+        <div class="grouped">
+          <select name="entries" id="entries">
+            <option value="none">No selection</option>
+            <option value="dynamic">Dynamic feed (with load more)</option>
+            <option value="topRanked">Fixed (top ranked)</option>
+            <option value="fixed">Fixed</option>
+          </select>
+          <div class="grouped" id="entries-count">
+            <label for="count">Count</label>
+            <input type="number" name="count" value="1">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="input">
-      <label for="color">Background color</label>
-      <div class="color-picker">
-        <input type="text" placeholder="auto" name="color" data-key="color">
-        <input type="color" name="colorPicker">
+      <div class="input">
+        <label for="sort-order">Sort order</label>
+        <select name="sort-order" data-key="sort-order">
+          <option value="none">No selection</option>
+          <option value="rank">Most popular</option>
+          <option value="created">Newest first</option>
+          <option value="created-desc">Oldest first</option>
+          <option value="random">Random</option>
+        </select>
       </div>
-    </div>
-  </div>
+    </section>
+    <section>
+      <div class="input">
+        <label for="bgColor">Foreground color</label>
+        <div class="grouped color-picker">
+          <input type="text" placeholder="auto" name="bgColor" data-key="bgColor">
+          <input type="color" name="bgColorPicker">
+        </div>
+      </div>
+      <div class="input">
+        <label for="color">Background color</label>
+        <div class="grouped color-picker">
+          <input type="text" placeholder="auto" name="color" data-key="color">
+          <input type="color" name="colorPicker">
+        </div>
+      </div>
+    </section>
+  </main>
   <script src="index.js"></script>
 </body>
 </html>

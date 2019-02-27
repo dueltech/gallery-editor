@@ -19,11 +19,26 @@ const watchColorPicker = (el) => {
   });
 };
 
+const watchEntriesSelect = (el) => {
+  const showCountFor = ['topRanked', 'fixed'];
+  const countInput = document.getElementById('entries-count');
+  const updateDisplay = (select) => {
+    countInput.style.display = showCountFor.includes(select.value) ? 'flex' : 'none';
+  };
+  updateDisplay(countInput);
+  el.addEventListener('change', ({ target }) => {
+    updateDisplay(target);
+  });
+};
+
 const init = () => {
+  // watch for color picker changes
   const colorPickers = document.querySelectorAll('.color-picker');
   colorPickers.forEach((picker) => {
     watchColorPicker(picker);
   });
+  // display count input based on selected value for "Displayed Entries"
+  watchEntriesSelect(document.getElementById('entries'));
 };
 
 init();
