@@ -31,6 +31,23 @@ const watchEntriesSelect = (el) => {
   });
 };
 
+const watchLayoutSelect = (el) => {
+  const inputs = ['rows', 'columns'];
+  const updateDisplays = (select) => {
+    if (select.selectedOptions) {
+      const toShow = select.selectedOptions[0].dataset.show.split(' ');
+      inputs.forEach((input) => {
+        const inputField = document.getElementById(input);
+        inputField.style.display = toShow.includes(input) ? 'flex' : 'none';
+      });
+    }
+  };
+  updateDisplays(el);
+  el.addEventListener('change', ({ target }) => {
+    updateDisplays(target);
+  });
+};
+
 const init = () => {
   // watch for color picker changes
   const colorPickers = document.querySelectorAll('.color-picker');
@@ -39,6 +56,8 @@ const init = () => {
   });
   // display count input based on selected value for "Displayed Entries"
   watchEntriesSelect(document.getElementById('entries'));
+  // display rows/columns inputs based on selected value for "Layout Style"
+  watchLayoutSelect(document.getElementById('layoutStyle'));
 };
 
 init();

@@ -10,106 +10,135 @@
 <body>
   <h2>Duel Settings Editor</h2>
   <main>
-    <section>
-      <div class="input">
-        <label for="entries">Displayed Entries</label>
-        <div class="grouped">
-          <select name="entries" id="entries">
+    <article class="columns">
+      <section>
+        <div class="input">
+          <label for="entries">Displayed Entries</label>
+          <div class="grouped">
+            <select name="entries" id="entries">
+              <option value="none">No selection</option>
+              <option value="dynamic">Dynamic feed (with load more)</option>
+              <option value="topRanked">Fixed (top ranked)</option>
+              <option value="fixed">Fixed</option>
+            </select>
+            <div class="grouped" id="entries-count">
+              <label for="count">Count</label>
+              <input type="number" name="count" value="1">
+            </div>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="campaignOnly" checked>
+            <label for="campaignOnly">Include relevant product entries</label>
+          </div>
+        </div>
+        <div class="input">
+          <label for="sort-order">Sort order</label>
+          <select name="sort-order">
             <option value="none">No selection</option>
-            <option value="dynamic">Dynamic feed (with load more)</option>
-            <option value="topRanked">Fixed (top ranked)</option>
-            <option value="fixed">Fixed</option>
+            <option value="rank">Most popular</option>
+            <option value="created">Newest first</option>
+            <option value="created-desc">Oldest first</option>
+            <option value="random">Random</option>
           </select>
-          <div class="grouped" id="entries-count">
-            <label for="count">Count</label>
-            <input type="number" name="count" value="1">
+        </div>
+        <div class="input">
+          <label for="sort-controls">Displayed sort controls</label>
+          <div class="grouped checkboxes">
+            <div class="checkbox">
+              <input type="checkbox" name="rank">
+              <label for="rank">Most popular</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="created">
+              <label for="created">Newest first</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="created-desc">
+              <label for="created-desc">Oldest first</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="random">
+              <label for="random">Random</label>
+            </div>
           </div>
         </div>
-        <div class="checkbox">
-          <input type="checkbox" name="campaignOnly" checked>
-          <label for="campaignOnly">Include relevant product entries</label>
+        <div class="input">
+          <label for="displayMin">Minimum entries before display</label>
+          <input type="number" name="displayMin" placeholder="1">
         </div>
-      </div>
-      <div class="input">
-        <label for="sort-order">Sort order</label>
-        <select name="sort-order">
-          <option value="none">No selection</option>
-          <option value="rank">Most popular</option>
-          <option value="created">Newest first</option>
-          <option value="created-desc">Oldest first</option>
-          <option value="random">Random</option>
-        </select>
-      </div>
-      <div class="input">
-        <label for="sort-controls">Displayed sort controls</label>
-        <div class="grouped checkboxes">
-          <div class="checkbox">
-            <input type="checkbox" name="rank">
-            <label for="rank">Most popular</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="created">
-            <label for="created">Newest first</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="created-desc">
-            <label for="created-desc">Oldest first</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="random">
-            <label for="random">Random</label>
+      </section>
+      <section>
+        <div class="input">
+          <label for="bgColor">Foreground color</label>
+          <div class="grouped color-picker">
+            <input type="text" placeholder="auto" name="bgColor">
+            <input type="color" name="bgColorPicker">
           </div>
         </div>
-      </div>
-      <div class="input">
-        <label for="displayMin">Minimum entries before display</label>
-        <input type="number" name="displayMin" placeholder="1">
-      </div>
-    </section>
-    <section>
-      <div class="input">
-        <label for="bgColor">Foreground color</label>
-        <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="bgColor">
-          <input type="color" name="bgColorPicker">
-        </div>
-      </div>
-      <div class="input">
-        <label for="color">Background color</label>
-        <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="color">
-          <input type="color" name="colorPicker">
-        </div>
-      </div>
-      <div class="input">
-        <label for="thumbColor">Thumbnail overlay color</label>
-        <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="thumbColor">
-          <input type="color" name="colorPicker">
-        </div>
-      </div>
-      <div class="input">
-        <label for="misc-display">Misc. display</label>
-        <div class="grouped checkboxes">
-          <div class="checkbox">
-            <input type="checkbox" name="hideAtrributions">
-            <label for="hideAtrributions">Hide attributions</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="hideDates">
-            <label for="hideDates">Hide dates</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="testimonialPreview">
-            <label for="testimonialPreview">Preview testimonials</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="seamless">
-            <label for="seamless">Seamless</label>
+        <div class="input">
+          <label for="color">Background color</label>
+          <div class="grouped color-picker">
+            <input type="text" placeholder="auto" name="color">
+            <input type="color" name="colorPicker">
           </div>
         </div>
-      </div>
-    </section>
+        <div class="input">
+          <label for="thumbColor">Thumbnail overlay color</label>
+          <div class="grouped color-picker">
+            <input type="text" placeholder="auto" name="thumbColor">
+            <input type="color" name="colorPicker">
+          </div>
+        </div>
+        <div class="input">
+          <label for="misc-display">Misc. display</label>
+          <div class="grouped checkboxes">
+            <div class="checkbox">
+              <input type="checkbox" name="hideAtrributions">
+              <label for="hideAtrributions">Hide attributions</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="hideDates">
+              <label for="hideDates">Hide dates</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="testimonialPreview">
+              <label for="testimonialPreview">Preview testimonials</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" name="seamless">
+              <label for="seamless">Seamless</label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+    <article>
+      <section>
+        <div class="input">
+          <label>Layout</label>
+          <div class="grouped">
+            <div class="grouped">
+              <label for="layoutStyle">Style</label>
+              <select name="layoutStyle" id="layoutStyle">
+                <option value="none" data-show="">No selection</option>
+                <option value="grid" data-show="rows columns">Grid</option>
+                <option value="list" data-show="rows">List</option>
+                <option value="carousel" data-show="columns">Carousel</option>
+                <option value="dynamic" data-show="">Dynamic</option>
+              </select>
+            </div>
+            <div class="grouped" id="rows">
+              <label for="rows">Rows</label>
+              <input type="number" name="rows" placeholder="auto">
+            </div>
+            <div class="grouped" id="columns">
+              <label for="columns">Columns</label>
+              <input type="number" name="columns" placeholder="auto">
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
   </main>
   <script src="index.js"></script>
 </body>
