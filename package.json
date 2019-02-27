@@ -1,0 +1,14 @@
+{
+  "name": "settings-editor",
+  "version": "1.0.0",
+  "description": "Configure the Duel gallery settings in a convenient editor.",
+  "dependencies": {
+    "parcel-bundler": "^1.11.0"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Duel",
+  "license": "ISC"
+}

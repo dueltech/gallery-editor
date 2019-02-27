@@ -1,3 +1,5 @@
+import createLayoutStyle from './components/layoutStyle';
+
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
 const colorRegex = /^#([A-Fa-f0-9]{6})$/;
 
@@ -40,6 +42,17 @@ const watchLayoutSelect = (el) => {
         const inputField = document.getElementById(input);
         inputField.style.display = toShow.includes(input) ? 'flex' : 'none';
       });
+      // display layout style rules based on layout style selection
+      const layoutStyles = document.getElementById('layout-styles');
+      if (select.selectedOptions[0].value === 'dynamic') {
+        layoutStyles.parentNode.style.display = 'block';
+        if (layoutStyles.innerHTML === '') {
+          // insert example rule if empty
+          layoutStyles.appendChild(createLayoutStyle());
+        }
+      } else {
+        layoutStyles.parentNode.style.display = 'none';
+      }
     }
   };
   updateDisplays(el);
@@ -58,6 +71,10 @@ const init = () => {
   watchEntriesSelect(document.getElementById('entries'));
   // display rows/columns inputs based on selected value for "Layout Style"
   watchLayoutSelect(document.getElementById('layoutStyle'));
+  // add layout style rule on click
+  document.getElementById('new-layout-style').addEventListener('click', () => {
+    document.getElementById('layout-styles').appendChild(createLayoutStyle());
+  });
 };
 
 init();
