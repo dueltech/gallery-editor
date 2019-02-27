@@ -14,7 +14,7 @@ export default ({ type = 'grid', mediaQuery = '' } = {}) => {
     </div>
   </div>
   <div class="grouped">
-    <label style="width: 7rem">Media query</label>
+    <label style="width: 8rem">Media query</label>
     <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery}">
   </div>
   `;
