@@ -32,7 +32,7 @@
       </div>
       <div class="input">
         <label for="sort-order">Sort order</label>
-        <select name="sort-order" data-key="sort-order">
+        <select name="sort-order">
           <option value="none">No selection</option>
           <option value="rank">Most popular</option>
           <option value="created">Newest first</option>
@@ -61,26 +61,30 @@
           </div>
         </div>
       </div>
+      <div class="input">
+        <label for="displayMin">Minimum entries before display</label>
+        <input type="number" name="displayMin" placeholder="1">
+      </div>
     </section>
     <section>
       <div class="input">
         <label for="bgColor">Foreground color</label>
         <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="bgColor" data-key="bgColor">
+          <input type="text" placeholder="auto" name="bgColor">
           <input type="color" name="bgColorPicker">
         </div>
       </div>
       <div class="input">
         <label for="color">Background color</label>
         <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="color" data-key="color">
+          <input type="text" placeholder="auto" name="color">
           <input type="color" name="colorPicker">
         </div>
       </div>
       <div class="input">
-        <label for="color">Thumbnail overlay color</label>
+        <label for="thumbColor">Thumbnail overlay color</label>
         <div class="grouped color-picker">
-          <input type="text" placeholder="auto" name="color" data-key="color">
+          <input type="text" placeholder="auto" name="thumbColor">
           <input type="color" name="colorPicker">
         </div>
       </div>

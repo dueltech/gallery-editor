@@ -45,7 +45,6 @@ main {
 
 input[type="checkbox"] {
   margin-top: .75rem;
-  margin-bottom: .75rem;
   margin-left: 0;
   width: unset;
   display: inline-block;
