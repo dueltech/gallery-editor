@@ -37,7 +37,26 @@ article {
   line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 0;
   box-sizing: border-box;
+}
+
+.select-wrapper select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 2rem;
+}
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+.select-wrapper::after {
+  content: "▼";
+  position: absolute;
+  right: .6rem;
+  top: .7rem;
+  font-size: .75rem;
 }
 
 .input label {
@@ -133,8 +152,8 @@ button:hover {
 }
 
 /* fix margins for conditionally rendered count input for "Displayed Entries" */
-#entries {
-  margin-right: 0;
+.select-wrapper {
+  margin-right: 0 !important;
 }
 #entries-count {
   display: none;

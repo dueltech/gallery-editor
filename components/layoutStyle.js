@@ -5,11 +5,13 @@ export default ({ type = 'grid', mediaQuery = '' } = {}) => {
   wrapper.innerHTML = `
   <div class="grouped">
     <label>Type</label>
-    <select class="type">
-      <option value="grid" ${selectedString('grid')}>Grid</option>
-      <option value="list" ${selectedString('list')}>List</option>
-      <option value="carousel" ${selectedString('carousel')}>Carousel</option>
-    </select>
+    <div class="select-wrapper">
+      <select class="type">
+        <option value="grid" ${selectedString('grid')}>Grid</option>
+        <option value="list" ${selectedString('list')}>List</option>
+        <option value="carousel" ${selectedString('carousel')}>Carousel</option>
+      </select>
+    </div>
   </div>
   <div class="grouped">
     <label style="width: 7rem">Media query</label>

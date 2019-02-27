@@ -15,12 +15,14 @@
         <div class="input">
           <label for="entries">Displayed Entries</label>
           <div class="grouped">
-            <select name="entries" id="entries">
-              <option value="none">No selection</option>
-              <option value="dynamic">Dynamic feed (with load more)</option>
-              <option value="topRanked">Fixed (top ranked)</option>
-              <option value="fixed">Fixed</option>
-            </select>
+            <div class="select-wrapper">
+              <select name="entries" id="entries">
+                <option value="none">No selection</option>
+                <option value="dynamic">Dynamic feed (with load more)</option>
+                <option value="topRanked">Fixed (top ranked)</option>
+                <option value="fixed">Fixed</option>
+              </select>
+            </div>
             <div class="grouped" id="entries-count">
               <label for="count">Count</label>
               <input type="number" name="count" value="1">
@@ -33,13 +35,15 @@
         </div>
         <div class="input">
           <label for="sort">Sort order</label>
-          <select name="sort">
-            <option value="none">No selection</option>
-            <option value="rank">Most popular</option>
-            <option value="created">Newest first</option>
-            <option value="created-desc">Oldest first</option>
-            <option value="random">Random</option>
-          </select>
+          <div class="select-wrapper">
+            <select name="sort">
+              <option value="none">No selection</option>
+              <option value="rank">Most popular</option>
+              <option value="created">Newest first</option>
+              <option value="created-desc">Oldest first</option>
+              <option value="random">Random</option>
+            </select>
+          </div>
         </div>
         <div class="input">
           <label>Displayed sort controls</label>
@@ -119,13 +123,15 @@
           <div class="grouped">
             <div class="grouped">
               <label for="layoutStyle">Style</label>
-              <select name="layoutStyle" id="layoutStyle">
-                <option value="none" data-show="">No selection</option>
-                <option value="grid" data-show="rows columns">Grid</option>
-                <option value="list" data-show="rows">List</option>
-                <option value="carousel" data-show="columns">Carousel</option>
-                <option value="dynamic" data-show="">Dynamic</option>
-              </select>
+              <div class="select-wrapper">
+                <select name="layoutStyle" id="layoutStyle">
+                  <option value="none" data-show="">No selection</option>
+                  <option value="grid" data-show="rows columns">Grid</option>
+                  <option value="list" data-show="rows">List</option>
+                  <option value="carousel" data-show="columns">Carousel</option>
+                  <option value="dynamic" data-show="">Dynamic</option>
+                </select>
+              </div>
             </div>
             <div class="grouped" id="rows">
               <label for="rows">Rows</label>
