@@ -32,8 +32,8 @@
           </div>
         </div>
         <div class="input">
-          <label for="sort-order">Sort order</label>
-          <select name="sort-order">
+          <label for="sort">Sort order</label>
+          <select name="sort">
             <option value="none">No selection</option>
             <option value="rank">Most popular</option>
             <option value="created">Newest first</option>
@@ -42,8 +42,8 @@
           </select>
         </div>
         <div class="input">
-          <label for="sort-controls">Displayed sort controls</label>
-          <div class="grouped checkboxes">
+          <label>Displayed sort controls</label>
+          <div class="grouped checkboxes" id="sort-controls">
             <div class="checkbox">
               <input type="checkbox" name="rank">
               <label for="rank">Most popular</label>
@@ -69,17 +69,17 @@
       </section>
       <section>
         <div class="input">
-          <label for="bgColor">Foreground color</label>
-          <div class="grouped color-picker">
-            <input type="text" placeholder="auto" name="bgColor">
-            <input type="color" name="bgColorPicker">
-          </div>
-        </div>
-        <div class="input">
-          <label for="color">Background color</label>
+          <label for="color">Foreground color</label>
           <div class="grouped color-picker">
             <input type="text" placeholder="auto" name="color">
             <input type="color" name="colorPicker">
+          </div>
+        </div>
+        <div class="input">
+          <label for="bgColor">Background color</label>
+          <div class="grouped color-picker">
+            <input type="text" placeholder="auto" name="bgColor">
+            <input type="color" name="bgColorPicker">
           </div>
         </div>
         <div class="input">
@@ -161,7 +161,8 @@
       </section>
     </article>
     <article class="bottom-controls">
-      <button>Generate gallery configuration</button>
+      <button id="generate-config">Generate gallery configuration code</button>
+      <textarea id="config-code" rows="10"></textarea>
     </article>
   </main>
   <script src="index.js"></script>

@@ -1,5 +1,6 @@
 import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
+import generateConfig from './utils/generateConfig';
 
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
 const colorRegex = /^#([A-Fa-f0-9]{6})$/;
@@ -97,6 +98,12 @@ const watchLayoutSelect = (el) => {
   });
 };
 
+const updateConfig = () => {
+  const config = generateConfig();
+  const configString = JSON.stringify(config, null, 2);
+  document.getElementById('config-code').value = configString;
+};
+
 const init = () => {
   // watch for color picker changes
   const colorPickers = document.querySelectorAll('.color-picker');
@@ -119,6 +126,8 @@ const init = () => {
   });
   // display rows/columns inputs based on selected value for "Layout Style"
   watchLayoutSelect(document.getElementById('layoutStyle'));
+  // generate config code on click
+  document.getElementById('generate-config').addEventListener('click', updateConfig);
 };
 
 init();

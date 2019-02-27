@@ -5,7 +5,7 @@ export default ({ type = 'grid', mediaQuery = '' } = {}) => {
   wrapper.innerHTML = `
   <div class="grouped">
     <label>Type</label>
-    <select>
+    <select class="type">
       <option value="grid" ${selectedString('grid')}>Grid</option>
       <option value="list" ${selectedString('list')}>List</option>
       <option value="carousel" ${selectedString('carousel')}>Carousel</option>
@@ -13,7 +13,7 @@ export default ({ type = 'grid', mediaQuery = '' } = {}) => {
   </div>
   <div class="grouped">
     <label style="width: 7rem">Media query</label>
-    <input type="text" placeholder="max-width: 400px" value="${mediaQuery}">
+    <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery}">
   </div>
   `;
   const buttonRemove = document.createElement('button');
