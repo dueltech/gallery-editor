@@ -71,12 +71,15 @@ const watchTabNavigation = () => {
 
 const watchLayoutSelect = (el) => {
   const inputs = ['rows', 'columns'];
-  const updateDisplays = (select) => {
+  const updateDisplays = (select, onChange = false) => {
     if (select.selectedOptions) {
       const toShow = select.selectedOptions[0].dataset.show.split(' ');
       inputs.forEach((input) => {
-        const inputField = document.getElementById(input);
-        inputField.style.display = toShow.includes(input) ? 'flex' : 'none';
+        const inputWrapper = document.getElementById(input);
+        inputWrapper.style.display = toShow.includes(input) ? 'flex' : 'none';
+        if (onChange) {
+          inputWrapper.querySelector('input').value = '';
+        }
       });
       // display layout style rules based on layout style selection
       const layoutStyles = document.getElementById('layout-styles');
@@ -93,7 +96,7 @@ const watchLayoutSelect = (el) => {
   };
   updateDisplays(el);
   el.addEventListener('change', ({ target }) => {
-    updateDisplays(target);
+    updateDisplays(target, true);
     checkTabs();
   });
 };
