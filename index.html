@@ -160,8 +160,16 @@
         </div>
       </section>
     </article>
-    <article class="bottom-controls">
-      <button id="generate-config">Generate gallery configuration code</button>
+    <article id="bottom-controls">
+      <div class="header">
+        <button id="generate-config">Generate gallery configuration code</button>
+        <div>
+          <input type="radio" name="language" value="json" checked>
+          <label for="json">JSON</label>
+          <input type="radio" name="language" value="js">
+          <label for="js">JS</label>
+        </div>
+      </div>
       <textarea id="config-code" rows="10"></textarea>
     </article>
   </main>

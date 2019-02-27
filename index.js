@@ -99,9 +99,20 @@ const watchLayoutSelect = (el) => {
 };
 
 const updateConfig = () => {
+  const language = Array.from(document.getElementsByName('language'))
+    .find(el => el.checked)
+    .value;
   const config = generateConfig();
   const configString = JSON.stringify(config, null, 2);
-  document.getElementById('config-code').value = configString;
+  if (language === 'js') {
+    const configStringJs = configString
+      .replace(/^\s+"/gm, x => x.replace('"', ''))
+      .replace(/":/g, x => x.replace('"', ''))
+      .replace(/"/g, "'");
+    document.getElementById('config-code').value = configStringJs;
+  } else {
+    document.getElementById('config-code').value = configString;
+  }
 };
 
 const init = () => {

@@ -155,15 +155,20 @@ button:hover {
 }
 
 
-.bottom-controls {
+#bottom-controls {
   border-top: 2px #f2f2f2 solid;
   padding: 1.5rem 0;
 }
-.bottom-controls > button {
-  padding: .75rem 1.5rem;
+#bottom-controls .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
 }
-.bottom-controls > textarea {
+#bottom-controls > button {
+  padding: .75rem 1.5rem;
+}
+#bottom-controls > textarea {
   display: block;
   width: 100%;
   border: 1px #ccc solid;
