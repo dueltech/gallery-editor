@@ -25,6 +25,10 @@
             <input type="number" name="count" value="1">
           </div>
         </div>
+        <div class="checkbox">
+          <input type="checkbox" name="campaignOnly" checked>
+          <label for="campaignOnly">Include relevant product entries</label>
+        </div>
       </div>
       <div class="input">
         <label for="sort-order">Sort order</label>
@@ -35,6 +39,27 @@
           <option value="created-desc">Oldest first</option>
           <option value="random">Random</option>
         </select>
+      </div>
+      <div class="input">
+        <label for="sort-controls">Displayed sort controls</label>
+        <div class="grouped checkboxes">
+          <div class="checkbox">
+            <input type="checkbox" name="rank">
+            <label for="rank">Most popular</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="created">
+            <label for="created">Newest first</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="created-desc">
+            <label for="created-desc">Oldest first</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="random">
+            <label for="random">Random</label>
+          </div>
+        </div>
       </div>
     </section>
     <section>
@@ -50,6 +75,34 @@
         <div class="grouped color-picker">
           <input type="text" placeholder="auto" name="color" data-key="color">
           <input type="color" name="colorPicker">
+        </div>
+      </div>
+      <div class="input">
+        <label for="color">Thumbnail overlay color</label>
+        <div class="grouped color-picker">
+          <input type="text" placeholder="auto" name="color" data-key="color">
+          <input type="color" name="colorPicker">
+        </div>
+      </div>
+      <div class="input">
+        <label for="misc-display">Misc. display</label>
+        <div class="grouped checkboxes">
+          <div class="checkbox">
+            <input type="checkbox" name="hideAtrributions">
+            <label for="hideAtrributions">Hide attributions</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="hideDates">
+            <label for="hideDates">Hide dates</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="testimonialPreview">
+            <label for="testimonialPreview">Preview testimonials</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="seamless">
+            <label for="seamless">Seamless</label>
+          </div>
         </div>
       </div>
     </section>
