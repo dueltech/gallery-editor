@@ -15,7 +15,7 @@ export default ({ type = 'grid', mediaQuery = '' } = {}) => {
   </div>
   <div class="grouped">
     <label style="width: 8rem">Media query</label>
-    <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery}">
+    <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery.replace(/(\(|\))/g, '')}">
   </div>
   `;
   const buttonRemove = document.createElement('button');
