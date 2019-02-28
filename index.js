@@ -18,11 +18,7 @@ const updateGalleryIdControls = () => {
     : '';
   showable.forEach((id) => {
     const el = document.getElementById(id);
-    if (toShow === id) {
-      el.classList.remove('hidden');
-    } else {
-      el.classList.add('hidden');
-    }
+    el.classList.toggle('hidden', toShow !== id);
   });
 };
 
@@ -48,7 +44,7 @@ const watchEntriesSelect = (el) => {
   const showCountFor = ['topRanked', 'fixed'];
   const countInput = document.getElementById('entries-count');
   const updateDisplay = (select) => {
-    countInput.style.display = showCountFor.includes(select.value) ? 'flex' : 'none';
+    countInput.classList.toggle('hidden', !showCountFor.includes(select.value));
   };
   updateDisplay(countInput);
   el.addEventListener('change', ({ target }) => {
@@ -62,16 +58,16 @@ const checkTabs = () => {
   const tabsContainer = layoutRules.querySelector('.tabs');
   const tabContents = layoutRules.querySelectorAll('.tab-content > div');
   if (!layoutStyle || layoutStyle.value === 'none') {
-    layoutRules.style.display = 'none';
+    layoutRules.classList.add('hidden');
   } else if (layoutStyle.value !== 'dynamic') {
-    layoutRules.style.display = 'block';
-    tabsContainer.style.display = 'none';
+    layoutRules.classList.remove('hidden');
+    tabsContainer.classList.add('hidden');
     tabContents.forEach((c) => { c.classList.remove('active'); });
     const tabContent = Array.from(tabContents).find(c => layoutStyle.value === c.dataset.key);
     tabContent.classList.add('active');
   } else {
-    layoutRules.style.display = 'block';
-    tabsContainer.style.display = 'flex';
+    layoutRules.classList.remove('hidden');
+    tabsContainer.classList.remove('hidden');
   }
 };
 
@@ -96,7 +92,7 @@ const updateLayoutDisplays = (select, onChange = false) => {
     const toShow = select.selectedOptions[0].dataset.show.split(' ');
     inputs.forEach((input) => {
       const inputWrapper = document.getElementById(input);
-      inputWrapper.style.display = toShow.includes(input) ? 'flex' : 'none';
+      inputWrapper.classList.toggle('hidden', !toShow.includes(input));
       if (onChange) {
         inputWrapper.querySelector('input').value = '';
       }
@@ -104,13 +100,13 @@ const updateLayoutDisplays = (select, onChange = false) => {
     // display layout style rules based on layout style selection
     const layoutStyles = document.getElementById('layout-styles');
     if (select.selectedOptions[0].value === 'dynamic') {
-      layoutStyles.parentNode.style.display = 'block';
+      layoutStyles.parentNode.classList.remove('hidden');
       if (layoutStyles.innerHTML === '') {
         // insert example rule if empty
         layoutStyles.appendChild(createLayoutStyle());
       }
     } else {
-      layoutStyles.parentNode.style.display = 'none';
+      layoutStyles.parentNode.classList.add('hidden');
     }
   }
 };
