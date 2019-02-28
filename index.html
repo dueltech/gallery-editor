@@ -29,14 +29,14 @@
             </div>
           </div>
           <div class="checkbox">
-            <input type="checkbox" name="campaignOnly" checked>
+            <input type="checkbox" name="campaignOnly" id="campaignOnly" checked>
             <label for="campaignOnly">Include relevant product entries</label>
           </div>
         </div>
         <div class="input">
           <label for="sort">Sort order</label>
           <div class="select-wrapper">
-            <select name="sort">
+            <select name="sort" id="sort">
               <option value="none">No selection</option>
               <option value="rank">Most popular</option>
               <option value="created">Newest first</option>
@@ -68,28 +68,28 @@
         </div>
         <div class="input">
           <label for="displayMin">Minimum entries before display</label>
-          <input type="number" name="displayMin" placeholder="1">
+          <input type="number" name="displayMin" id="displayMin" placeholder="1">
         </div>
       </section>
       <section>
         <div class="input">
           <label for="color">Foreground color</label>
           <div class="grouped color-picker">
-            <input type="text" placeholder="auto" name="color">
+            <input type="text" placeholder="auto" name="color" id="color">
             <input type="color" name="colorPicker">
           </div>
         </div>
         <div class="input">
           <label for="bgColor">Background color</label>
           <div class="grouped color-picker">
-            <input type="text" placeholder="auto" name="bgColor">
+            <input type="text" placeholder="auto" name="bgColor" id="bgColor">
             <input type="color" name="bgColorPicker">
           </div>
         </div>
         <div class="input">
           <label for="thumbColor">Thumbnail overlay color</label>
           <div class="grouped color-picker">
-            <input type="text" placeholder="auto" name="thumbColor">
+            <input type="text" placeholder="auto" name="thumbColor" id="thumbColor">
             <input type="color" name="colorPicker">
           </div>
         </div>
@@ -97,19 +97,19 @@
           <label for="misc-display">Misc. display</label>
           <div class="grouped checkboxes">
             <div class="checkbox">
-              <input type="checkbox" name="hideAtrributions">
+              <input type="checkbox" name="hideAtrributions" id="hideAtrributions">
               <label for="hideAtrributions">Hide attributions</label>
             </div>
             <div class="checkbox">
-              <input type="checkbox" name="hideDates">
+              <input type="checkbox" name="hideDates" id="hideDates">
               <label for="hideDates">Hide dates</label>
             </div>
             <div class="checkbox">
-              <input type="checkbox" name="testimonialPreview">
+              <input type="checkbox" name="testimonialPreview" id="testimonialPreview">
               <label for="testimonialPreview">Preview testimonials</label>
             </div>
             <div class="checkbox">
-              <input type="checkbox" name="seamless">
+              <input type="checkbox" name="seamless" id="seamless">
               <label for="seamless">Seamless</label>
             </div>
           </div>
@@ -134,12 +134,12 @@
               </div>
             </div>
             <div class="grouped" id="rows">
-              <label for="rows">Rows</label>
-              <input type="number" name="rows" placeholder="auto">
+              <label for="default-rows">Rows</label>
+              <input type="number" name="default-rows" id="default-rows" placeholder="auto">
             </div>
             <div class="grouped" id="columns">
-              <label for="columns">Columns</label>
-              <input type="number" name="columns" placeholder="auto">
+              <label for="default-columns">Columns</label>
+              <input type="number" name="default-columns" id="default-columns" placeholder="auto">
             </div>
           </div>
         </div>

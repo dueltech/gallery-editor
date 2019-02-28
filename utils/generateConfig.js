@@ -2,7 +2,7 @@ export default () => {
   const config = {};
 
   // Displayed entries
-  const displayedEntries = document.getElementsByName('entries')[0];
+  const displayedEntries = document.getElementById('entries');
   const includeEntryValues = ['topRanked', 'fixed'];
   if (includeEntryValues.includes(displayedEntries.value)) {
     const countInput = document.querySelector('#entries-count input');
@@ -10,13 +10,13 @@ export default () => {
   }
 
   // Include relevant product entries
-  const campaignOnly = document.getElementsByName('campaignOnly')[0];
+  const campaignOnly = document.getElementById('campaignOnly');
   if (!campaignOnly.checked) {
     config.campaignOnly = true;
   }
 
   // Sort order
-  const sort = document.getElementsByName('sort')[0];
+  const sort = document.getElementById('sort');
   if (sort.value && sort.value !== 'none') {
     config.sort = sort.value;
   }
@@ -30,7 +30,7 @@ export default () => {
   }
 
   // Minimum entries before display
-  const displayMin = document.getElementsByName('displayMin')[0];
+  const displayMin = document.getElementById('displayMin');
   if (displayMin.value) {
     config.displayMin = +displayMin.value;
   }
@@ -38,7 +38,7 @@ export default () => {
   // Colors
   const colors = ['color', 'bgColor', 'thumbColor'];
   colors.forEach((color) => {
-    const inputEl = document.getElementsByName(color)[0];
+    const inputEl = document.getElementById(color);
     if (inputEl.value) {
       config[color] = inputEl.value;
     }
@@ -47,7 +47,7 @@ export default () => {
   // Misc. display
   const miscDisplayOptions = ['hideAtrributions', 'hideDates', 'testimonialPreview', 'seamless'];
   miscDisplayOptions.forEach((option) => {
-    const checkbox = document.getElementsByName(option)[0];
+    const checkbox = document.getElementById(option);
     if (checkbox.checked) {
       config[option] = true;
     }
@@ -94,15 +94,15 @@ export default () => {
   };
 
   // Layout styles
-  const layoutStyle = document.getElementsByName('layoutStyle')[0].value;
+  const layoutStyle = document.getElementById('layoutStyle').value;
   if (!layoutStyle || layoutStyle === 'none') {
     // no configured layout
     return config;
   } if (layoutStyle !== 'dynamic') {
     // layout style is static
     config.layoutStyle = layoutStyle;
-    const rows = document.getElementsByName('rows')[0];
-    const columns = document.getElementsByName('columns')[0];
+    const rows = document.getElementById('default-rows');
+    const columns = document.getElementById('default-columns');
     if (rows.value) {
       config.rows = +rows.value;
     }
