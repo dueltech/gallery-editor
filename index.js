@@ -173,8 +173,11 @@ const init = () => {
   });
   // display rows/columns inputs based on selected value for "Layout Style"
   watchLayoutSelect(document.getElementById('layoutStyle'));
-  // generate config code on click
+  // generate config code on click and update on language change
   document.getElementById('generate-config').addEventListener('click', updateConfig);
+  Array.from(document.getElementsByName('language')).forEach((radioButton) => {
+    radioButton.addEventListener('change', updateConfig);
+  });
 };
 
 init();
