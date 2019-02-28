@@ -3,6 +3,7 @@ import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
 import generateConfig from './utils/generateConfig';
 import importConfig from './utils/importConfig';
+import createSnippet from './utils/createSnippet';
 
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
 const colorRegex = /^#([A-Fa-f0-9]{6})$/;
@@ -143,8 +144,8 @@ const updateConfig = () => {
     .find(el => el.checked)
     .value;
   const config = generateConfig();
-  if (language === 'js') {
-    document.getElementById('config-code').value = json5.stringify(config, null, 2);
+  if (language === 'html') {
+    document.getElementById('config-code').value = createSnippet(config);
   } else {
     document.getElementById('config-code').value = JSON.stringify(config, null, 2);
   }
