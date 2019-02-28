@@ -1,3 +1,4 @@
+import json5 from 'json5';
 import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
 import generateConfig from './utils/generateConfig';
@@ -106,15 +107,10 @@ const updateConfig = () => {
     .find(el => el.checked)
     .value;
   const config = generateConfig();
-  const configString = JSON.stringify(config, null, 2);
   if (language === 'js') {
-    const configStringJs = configString
-      .replace(/^\s+"/gm, x => x.replace('"', ''))
-      .replace(/":/g, x => x.replace('"', ''))
-      .replace(/"/g, "'");
-    document.getElementById('config-code').value = configStringJs;
+    document.getElementById('config-code').value = json5.stringify(config, null, 2);
   } else {
-    document.getElementById('config-code').value = configString;
+    document.getElementById('config-code').value = JSON.stringify(config, null, 2);
   }
 };
 
