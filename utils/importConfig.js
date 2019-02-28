@@ -1,5 +1,6 @@
 import createLayoutRule from '../components/layoutRule';
 import createLayoutStyle from '../components/layoutStyle';
+import transformHexColor from './transformHexColor';
 
 export default (config) => {
   // Gallery identifier
@@ -42,6 +43,7 @@ export default (config) => {
   const colors = ['color', 'bgColor', 'thumbColor'];
   colors.forEach((color) => {
     document.getElementById(color).value = config[color] || '';
+    document.getElementById(`${color}Picker`).value = transformHexColor(config[color] || '');
   });
 
   // Misc. display
