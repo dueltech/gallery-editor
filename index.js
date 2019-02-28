@@ -8,6 +8,24 @@ import createSnippet from './utils/createSnippet';
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
 const colorRegex = /^#([A-Fa-f0-9]{6})$/;
 
+const updateGalleryIdControls = () => {
+  const select = document.getElementById('gallery-identifier');
+  const showable = Array.from(select.children)
+    .map(el => el.dataset.show)
+    .filter(id => id);
+  const toShow = select.selectedOptions && select.selectedOptions.length > 0
+    ? select.selectedOptions[0].dataset.show
+    : '';
+  showable.forEach((id) => {
+    const el = document.getElementById(id);
+    if (toShow === id) {
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  });
+};
+
 const watchColorPicker = (el) => {
   const textField = el.querySelector('input:not([type="color"])');
   const colorField = el.querySelector('input[type="color"]');
@@ -128,12 +146,13 @@ const addImportListeners = () => {
       errorContainer.style.display = 'none';
       errorContainer.innerText = '';
       importConfig(config);
+      updateGalleryIdControls();
       updateLayoutDisplays(document.getElementById('layoutStyle'));
       checkTabs();
       importModal.style.display = 'none';
     } catch (error) {
       errorContainer.style.display = 'block';
-      errorContainer.innerText = 'Error: Invalid config format';
+      errorContainer.innerText = `Error: ${error.message}`;
       console.error(error);
     }
   });
@@ -152,7 +171,11 @@ const updateConfig = () => {
 };
 
 const init = () => {
+  // add import functionality
   addImportListeners();
+  // watch for changes to gallery identifier inputs
+  updateGalleryIdControls();
+  document.getElementById('gallery-identifier').addEventListener('input', updateGalleryIdControls);
   // watch for color picker changes
   const colorPickers = document.querySelectorAll('.color-picker');
   colorPickers.forEach((picker) => {

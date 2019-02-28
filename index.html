@@ -16,6 +16,34 @@
     <article class="columns">
       <section>
         <div class="input">
+          <label for="gallery-identifier">Gallery identifier</label>
+          <div class="select-wrapper">
+            <select id="gallery-identifier">
+              <option value="none" data-show="">No identifier</option>
+              <option value="id" data-show="gallery-id">Gallery ID</option>
+              <option value="product" data-show="product">Short ID + Product SKU</option>
+            </select>
+          </div>
+        </div>
+        <div class="input" id="gallery-id">
+          <label for="id">Gallery ID</label>
+          <input type="text" name="id" id="id" placeholder="Duel Gallery ID">
+        </div>
+        <div class="grouped" id="product">
+          <div class="input">
+            <label for="short-id">Short ID</label>
+            <input type="text" name="short-id" id="short-id" placeholder="Duel Short ID">
+          </div>
+          <div class="input" style="flex: 1;">
+            <label for="product-sku">Product SKU</label>
+            <input type="text" name="product-sku" id="product-sku" placeholder="Unique product identifier">
+          </div>
+        </div>
+      </section>
+    </article>
+    <article class="columns">
+      <section>
+        <div class="input">
           <label for="entries">Displayed Entries</label>
           <div class="grouped">
             <div class="select-wrapper">

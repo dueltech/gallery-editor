@@ -2,6 +2,17 @@ import createLayoutRule from '../components/layoutRule';
 import createLayoutStyle from '../components/layoutStyle';
 
 export default (config) => {
+  // Gallery identifier
+  const identifierTypes = ['id', 'product'];
+  const identifierType = Object.keys(config).find(key => identifierTypes.includes(key));
+  document.getElementById('gallery-identifier').value = identifierType || 'none';
+  document.getElementById('id').value = config.id || '';
+  if (config.product && config.product.split('/').length !== 2) {
+    throw new Error('Wrong format for parameter "product", should be "shortId/productSku"');
+  }
+  document.getElementById('short-id').value = config.product ? config.product.split('/')[0] : '';
+  document.getElementById('product-sku').value = config.product ? config.product.split('/')[1] : '';
+
   // Displayed entries
   const entryValues = ['topRanked', 'fixed'];
   const entryValue = Object.keys(config).find(key => entryValues.includes(key));

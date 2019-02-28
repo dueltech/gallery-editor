@@ -1,6 +1,16 @@
 export default () => {
   const config = {};
 
+  // Gallery identifier
+  const identifierType = document.getElementById('gallery-identifier').value;
+  if (identifierType === 'id') {
+    config.id = document.getElementById('id').value;
+  } else if (identifierType === 'product') {
+    const shortId = document.getElementById('short-id').value;
+    const productSku = document.getElementById('product-sku').value;
+    config.product = `${shortId}/${productSku}`;
+  }
+
   // Displayed entries
   const displayedEntries = document.getElementById('entries');
   const includeEntryValues = ['topRanked', 'fixed'];
