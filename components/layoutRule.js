@@ -4,7 +4,7 @@ export default (style, { mediaQuery = '', rows = '', columns = '' } = {}) => {
   wrapper.innerHTML = `
   <div class="grouped">
     <label>Media query</label>
-    <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery}">
+    <input class="mediaQuery" type="text" placeholder="max-width: 400px" value="${mediaQuery.replace(/(\(|\))/g, '')}">
   </div>
   ${style !== 'carousel' ? `
   <div class="grouped">

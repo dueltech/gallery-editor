@@ -2,6 +2,7 @@ import json5 from 'json5';
 import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
 import generateConfig from './utils/generateConfig';
+import importConfig from './utils/importConfig';
 
 const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
 const colorRegex = /^#([A-Fa-f0-9]{6})$/;
@@ -70,35 +71,70 @@ const watchTabNavigation = () => {
   });
 };
 
-const watchLayoutSelect = (el) => {
+const updateLayoutDisplays = (select, onChange = false) => {
   const inputs = ['rows', 'columns'];
-  const updateDisplays = (select, onChange = false) => {
-    if (select.selectedOptions) {
-      const toShow = select.selectedOptions[0].dataset.show.split(' ');
-      inputs.forEach((input) => {
-        const inputWrapper = document.getElementById(input);
-        inputWrapper.style.display = toShow.includes(input) ? 'flex' : 'none';
-        if (onChange) {
-          inputWrapper.querySelector('input').value = '';
-        }
-      });
-      // display layout style rules based on layout style selection
-      const layoutStyles = document.getElementById('layout-styles');
-      if (select.selectedOptions[0].value === 'dynamic') {
-        layoutStyles.parentNode.style.display = 'block';
-        if (layoutStyles.innerHTML === '') {
-          // insert example rule if empty
-          layoutStyles.appendChild(createLayoutStyle());
-        }
-      } else {
-        layoutStyles.parentNode.style.display = 'none';
+  if (select.selectedOptions) {
+    const toShow = select.selectedOptions[0].dataset.show.split(' ');
+    inputs.forEach((input) => {
+      const inputWrapper = document.getElementById(input);
+      inputWrapper.style.display = toShow.includes(input) ? 'flex' : 'none';
+      if (onChange) {
+        inputWrapper.querySelector('input').value = '';
       }
+    });
+    // display layout style rules based on layout style selection
+    const layoutStyles = document.getElementById('layout-styles');
+    if (select.selectedOptions[0].value === 'dynamic') {
+      layoutStyles.parentNode.style.display = 'block';
+      if (layoutStyles.innerHTML === '') {
+        // insert example rule if empty
+        layoutStyles.appendChild(createLayoutStyle());
+      }
+    } else {
+      layoutStyles.parentNode.style.display = 'none';
     }
-  };
-  updateDisplays(el);
-  el.addEventListener('change', ({ target }) => {
-    updateDisplays(target, true);
+  }
+};
+
+const watchLayoutSelect = (el) => {
+  updateLayoutDisplays(el);
+  el.addEventListener('input', ({ target }) => {
+    updateLayoutDisplays(target, true);
     checkTabs();
+  });
+};
+
+const addImportListeners = () => {
+  const importModal = document.getElementById('import-modal');
+  document.getElementById('import-config').addEventListener('click', () => {
+    importModal.style.display = 'block';
+  });
+  document.querySelectorAll('.modal .close').forEach((closeButton) => {
+    closeButton.addEventListener('click', () => {
+      importModal.style.display = 'none';
+    });
+  });
+  importModal.addEventListener('click', ({ target }) => {
+    if (target === importModal) {
+      importModal.style.display = 'none';
+    }
+  });
+  document.querySelector('#import-modal button').addEventListener('click', () => {
+    const configString = document.querySelector('#import-modal textarea').value;
+    const errorContainer = document.querySelector('#import-modal .error');
+    try {
+      const config = json5.parse(configString);
+      errorContainer.style.display = 'none';
+      errorContainer.innerText = '';
+      importConfig(config);
+      updateLayoutDisplays(document.getElementById('layoutStyle'));
+      checkTabs();
+      importModal.style.display = 'none';
+    } catch (error) {
+      errorContainer.style.display = 'block';
+      errorContainer.innerText = 'Error: Invalid config format';
+      console.error(error);
+    }
   });
 };
 
@@ -115,6 +151,7 @@ const updateConfig = () => {
 };
 
 const init = () => {
+  addImportListeners();
   // watch for color picker changes
   const colorPickers = document.querySelectorAll('.color-picker');
   colorPickers.forEach((picker) => {

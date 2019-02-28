@@ -8,7 +8,10 @@
   <title>Duel Gallery Config Editor</title>
 </head>
 <body>
-  <h2>Duel Gallery Config Editor</h2>
+  <div class="header">
+    <h2>Duel Gallery Config Editor</h2>
+    <button id="import-config">Import config</button>
+  </div>
   <main>
     <article class="columns">
       <section>
@@ -179,6 +182,17 @@
       <textarea id="config-code" rows="10"></textarea>
     </article>
   </main>
+  <div class="modal" id="import-modal">
+    <div class="modal-content">
+      <div class="header">
+        <h2>Import gallery configuration</h2>
+        <span class="close">&times;</span>
+      </div>
+      <textarea rows="10" placeholder="Paste your config here"></textarea>
+      <div class="error"></div>
+      <button>Import</button>
+    </div>
+  </div>
   <script src="index.js"></script>
 </body>
 </html>
