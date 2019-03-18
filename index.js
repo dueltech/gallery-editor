@@ -6,9 +6,6 @@ import importConfig from './utils/importConfig';
 import createSnippet from './utils/createSnippet';
 import transformHexColor from './utils/transformHexColor';
 
-const colorRegexShort = /^#([A-Fa-f0-9]{3})$/;
-const colorRegex = /^#([A-Fa-f0-9]{6})$/;
-
 const updateGalleryIdControls = () => {
   const select = document.getElementById('gallery-identifier');
   const showable = Array.from(select.children)
