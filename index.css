@@ -136,6 +136,10 @@ button {
   cursor: pointer;
 }
 
+button.secondary {
+  background: #fff;
+}
+
 button:hover {
   background: #e2e2e2;
 }

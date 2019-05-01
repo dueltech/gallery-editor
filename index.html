@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="index.css">
   <title>Duel Gallery Config Editor</title>
+  <script async src="https://vision.duel.me/loader.js"></script>
 </head>
 <body>
   <div class="header">
@@ -208,6 +209,18 @@
         </div>
       </div>
       <textarea id="config-code" rows="20"></textarea>
+    </article>
+    <article id="preview">
+      <div class="header">
+        <button id="show-preview">Show preview</button>
+        <button class="secondary" id="refresh-preview">Refresh</button>
+      </div>
+      <script>
+      window.DuelVision = window.DuelVision||function(o){(DuelVision.s=DuelVision.s||[]).push(o)};
+      </script>
+      <div id="gallery-container" style="min-height: 50px;">
+        <div id="duelvision-component"></div>
+      </div>
     </article>
   </main>
   <div class="modal" id="import-modal">

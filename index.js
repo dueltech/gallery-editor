@@ -157,6 +157,17 @@ const updateConfig = () => {
   }
 };
 
+const showPreview = () => {
+  const container = document.getElementById('duelvision-component');
+  container.innerHTML = '';
+  const config = generateConfig();
+  if (!config.id && !config.product) {
+    config.id = '5cc9da7bf0b9d2002d136acb'; // example gallery
+  }
+  // eslint-disable-next-line no-undef
+  DuelVision.load(config);
+};
+
 const init = () => {
   // add import functionality
   addImportListeners();
@@ -188,6 +199,14 @@ const init = () => {
   document.getElementById('generate-config').addEventListener('click', updateConfig);
   Array.from(document.getElementsByName('language')).forEach((radioButton) => {
     radioButton.addEventListener('change', updateConfig);
+  });
+  // show/update preview of gallery on click
+  const buttonIds = ['show-preview', 'refresh-preview'];
+  buttonIds.forEach((buttonId) => {
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.addEventListener('click', showPreview);
+    }
   });
 };
 
