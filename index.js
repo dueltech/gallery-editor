@@ -158,14 +158,36 @@ const updateConfig = () => {
 };
 
 const showPreview = () => {
-  const container = document.getElementById('duelvision-component');
-  container.innerHTML = '';
+  // reset currently previewed gallery
+  const galleryDiv = document.getElementById('duelvision-component');
+  galleryDiv.innerHTML = '';
+  // display loader while (re-)loading the gallery
+  const loader = document.querySelector('#gallery-container .loader');
+  loader.classList.toggle('hidden', false);
   const config = generateConfig();
   if (!config.id && !config.product) {
     config.id = '5cc9da7bf0b9d2002d136acb'; // example gallery
   }
   // eslint-disable-next-line no-undef
   DuelVision.load(config);
+
+  // the widget sends a 'ready' message once it's loaded
+  // example data of a message looks as follows:
+  // duelvision:{"ready":true,"name":"duelvision-0"}
+  window.addEventListener('message', ({ data }) => {
+    const marker = /^duelvision:/;
+    if (!((typeof data === 'string') && marker.test(data))) {
+      return;
+    }
+    try {
+      const dataParsed = JSON.parse(data.replace(marker, ''));
+      if (dataParsed.ready) {
+        loader.classList.toggle('hidden', true);
+      }
+    } catch (error) {
+      console.error('Failed to parse JSON data for message', data);
+    }
+  });
 };
 
 const init = () => {
