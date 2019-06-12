@@ -10,5 +10,5 @@ DuelVision(${configString});
 </script>
 <div id="duelvision-component"></div>
 `;
-  return snippet;
+  return snippet.trim();
 };

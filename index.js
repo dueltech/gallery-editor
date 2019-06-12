@@ -150,10 +150,13 @@ const updateConfig = () => {
     .find(el => el.checked)
     .value;
   const config = generateConfig();
+  const configContainer = document.getElementById('config-code');
   if (language === 'html') {
-    document.getElementById('config-code').value = createSnippet(config);
+    configContainer.value = createSnippet(config);
+  } else if (language === 'js') {
+    configContainer.value = json5.stringify(config, null, 2);
   } else {
-    document.getElementById('config-code').value = JSON.stringify(config, null, 2);
+    configContainer.value = JSON.stringify(config, null, 2);
   }
 };
 
