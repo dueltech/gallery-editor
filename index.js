@@ -169,7 +169,8 @@ const showPreview = () => {
   loader.classList.toggle('hidden', false);
   const config = generateConfig();
   if (!config.id && !config.product) {
-    config.id = '5cc9da7bf0b9d2002d136acb'; // example gallery
+    // example gallery
+    config.id = window.DUEL_DEV_LOADER ? '5a37ad3e71fd32000475a9d0' : '5cc9da7bf0b9d2002d136acb';
   }
   // eslint-disable-next-line no-undef
   DuelVision.load(config);
