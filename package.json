@@ -7,8 +7,8 @@
     "parcel-bundler": "^1.12.3"
   },
   "scripts": {
-    "start": "parcel index.html --out-dir dist",
-    "build": "parcel build index.html --out-dir docs --public-url ./"
+    "start": "parcel index.html dev.html --out-dir dist",
+    "build": "parcel build index.html dev.html --out-dir docs --public-url ./"
   },
   "author": "Duel",
   "license": "ISC"

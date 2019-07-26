@@ -152,7 +152,7 @@ const updateConfig = () => {
   const config = generateConfig();
   const configContainer = document.getElementById('config-code');
   if (language === 'html') {
-    configContainer.value = createSnippet(config);
+    configContainer.value = createSnippet(config, window.DUEL_DEV_LOADER);
   } else if (language === 'js') {
     configContainer.value = json5.stringify(config, null, 2);
   } else {
