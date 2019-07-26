@@ -1,0 +1,10 @@
+extends index.pug
+
+block variables
+  - var title = "Duel Gallery Config Editor (Dev)"
+block scripts
+  script.
+    window.DuelVisionService = 'https://vision-dev.duel.me';
+    window.DuelVisionApi = 'https://api-dev.duel.me';
+    window.DUEL_DEV_LOADER = true;
+  script(async='' src='https://vision-dev.duel.me/loader.js')

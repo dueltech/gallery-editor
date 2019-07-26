@@ -4,11 +4,12 @@
   "description": "Configure the Duel gallery settings in a convenient editor.",
   "dependencies": {
     "json5": "^2.1.0",
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "pug": "^2.0.4"
   },
   "scripts": {
-    "start": "parcel index.html dev.html --out-dir dist",
-    "build": "parcel build index.html dev.html --out-dir docs --public-url ./"
+    "start": "parcel index.pug dev.pug --out-dir dist",
+    "build": "parcel build index.pug dev.pug --out-dir docs --public-url ./"
   },
   "author": "Duel",
   "license": "ISC"

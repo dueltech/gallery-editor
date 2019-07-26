@@ -1,0 +1,174 @@
+block variables
+  - var title = "Duel Gallery Config Editor"
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(rel='stylesheet' href='index.css')
+  title= title
+  block scripts
+    script(async='' src='https://vision.duel.me/loader.js')
+.header
+  h2= title
+  button#import-config Import config
+main
+  article.columns
+    section
+      .input
+        label(for='gallery-identifier') Associated gallery
+        .select-wrapper
+          select#gallery-identifier
+            option(value='none' data-show='') Sample gallery
+            option(value='id' data-show='gallery-id') Gallery ID
+            option(value='product' data-show='product') Short ID + Product SKU
+      #gallery-id.input
+        label(for='id') Gallery ID
+        input#id(type='text' name='id' placeholder='Duel Gallery ID')
+      #product.grouped
+        .input
+          label(for='short-id') Short ID
+          input#short-id(type='text' name='short-id' placeholder='Duel Short ID')
+        .input(style='flex: 1;')
+          label(for='product-sku') Product SKU
+          input#product-sku(type='text' name='product-sku' placeholder='Unique product identifier')
+  article.columns
+    section
+      .input
+        label(for='entries') Displayed entries
+        .grouped
+          .select-wrapper
+            select#entries(name='entries')
+              option(value='none') No selection
+              option(value='dynamic') Dynamic feed (with load more)
+              option(value='topRanked') Fixed (top ranked)
+              option(value='fixed') Fixed
+          #entries-count.grouped
+            label(for='count') Count
+            input(type='number' name='count' value='1')
+        .checkbox
+          input#campaignOnly(type='checkbox' name='campaignOnly' checked='')
+          label(for='campaignOnly') Include relevant product entries
+      .input
+        label(for='sort') Sort order
+        .select-wrapper
+          select#sort(name='sort')
+            option(value='none') No selection
+            option(value='rank') Most popular
+            option(value='created') Newest first
+            option(value='created-desc') Oldest first
+            option(value='random') Random
+      .input
+        label Displayed sort controls
+        #sort-controls.grouped.checkboxes
+          .checkbox
+            input(type='checkbox' name='rank')
+            label(for='rank') Most popular
+          .checkbox
+            input(type='checkbox' name='created')
+            label(for='created') Newest first
+          .checkbox
+            input(type='checkbox' name='created-desc')
+            label(for='created-desc') Oldest first
+          .checkbox
+            input(type='checkbox' name='random')
+            label(for='random') Random
+      .input
+        label(for='displayMin') Minimum entries before display
+        input#displayMin(type='number' name='displayMin' placeholder='1')
+    section
+      .input
+        label(for='color') Foreground color
+        .grouped.color-picker
+          input#color(type='text' placeholder='auto' name='color')
+          input#colorPicker(type='color')
+      .input
+        label(for='bgColor') Background color
+        .grouped.color-picker
+          input#bgColor(type='text' placeholder='auto' name='bgColor')
+          input#bgColorPicker(type='color')
+      .input
+        label(for='thumbColor') Thumbnail overlay color
+        .grouped.color-picker
+          input#thumbColor(type='text' placeholder='auto' name='thumbColor')
+          input#thumbColorPicker(type='color')
+      .input
+        label(for='misc-display') Misc. display
+        .grouped.checkboxes
+          .checkbox
+            input#hideAtrributions(type='checkbox' name='hideAtrributions')
+            label(for='hideAtrributions') Hide attributions
+          .checkbox
+            input#hideDates(type='checkbox' name='hideDates')
+            label(for='hideDates') Hide dates
+          .checkbox
+            input#testimonialPreview(type='checkbox' name='testimonialPreview')
+            label(for='testimonialPreview') Preview testimonials
+          .checkbox
+            input#seamless(type='checkbox' name='seamless')
+            label(for='seamless') Seamless
+  article.columns
+    section
+      .input
+        label Layout
+        .grouped
+          .grouped
+            label(for='layoutStyle') Style
+            .select-wrapper
+              select#layoutStyle(name='layoutStyle')
+                option(value='none' data-show='') No selection
+                option(value='grid' data-show='rows columns') Grid
+                option(value='list' data-show='rows') List
+                option(value='carousel' data-show='columns') Carousel
+                option(value='dynamic' data-show='') Dynamic
+          #rows.grouped
+            label(for='default-rows') Rows
+            input#default-rows(type='number' name='default-rows' placeholder='auto')
+          #columns.grouped
+            label(for='default-columns') Columns
+            input#default-columns(type='number' name='default-columns' placeholder='auto')
+      .input
+        label Layout styles
+        #layout-styles
+        button#new-layout-style New layout style
+    section
+      #layout-rules.input
+        label Advanced layout rules
+        .tabs
+          span.active(data-key='grid') Grid
+          span(data-key='list') List
+          span(data-key='carousel') Carousel
+        .tab-content
+          .active(data-key='grid')
+          div(data-key='list')
+          div(data-key='carousel')
+          button#new-layout-rule New layout rule
+  article#bottom-controls
+    .header
+      button#generate-config Generate gallery configuration code
+      div
+        input(type='radio' name='language' value='json' checked='')
+        label(for='json') JSON
+        input(type='radio' name='language' value='js')
+        label(for='js') JS
+        input(type='radio' name='language' value='html')
+        label(for='html') Snippet
+    textarea#config-code(rows='20')
+  article#preview
+    .header
+      button#show-preview Show preview
+      button#refresh-preview.secondary Refresh
+    script.
+      window.DuelVision = window.DuelVision||function(o){(DuelVision.s=DuelVision.s||[]).push(o)};
+    #gallery-container(style='min-height: 50px;')
+      .loader.hidden Loading gallery...
+      #duelvision-component
+#import-modal.modal
+  .modal-content
+    .header
+      h2 Import gallery configuration
+      span.close &times;
+    textarea(rows='20' placeholder='Paste your config here')
+    .error
+    button Import
+script(src='index.js')
