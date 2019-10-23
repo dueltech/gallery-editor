@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "Configure the Duel gallery settings in a convenient editor.",
   "dependencies": {
-    "highlight.js": "^9.15.8",
-    "json5": "^2.1.0",
-    "marked": "^0.6.2",
-    "parcel-bundler": "^1.12.3",
+    "highlight.js": "^9.15.10",
+    "json5": "^2.1.1",
+    "marked": "^0.7.0",
+    "parcel-bundler": "^1.12.4",
     "pug": "^2.0.4"
   },
   "scripts": {
-    "start:client": "parcel src/client/index.pug src/client/dev.pug --out-dir dist",
+    "start:client": "parcel src/client/*.pug --out-dir dist",
     "start:docs": "node renderDocs.js --watch",
     "build": "npm run build:client && npm run build:docs",
-    "build:client": "parcel build src/client/index.pug src/client/dev.pug --out-dir docs --public-url ./",
+    "build:client": "parcel build src/client/*.pug --out-dir docs --public-url ./",
     "build:docs": "node renderDocs.js"
   },
   "author": "Duel",
