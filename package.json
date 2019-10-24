@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Configure the Duel gallery settings in a convenient editor.",
   "dependencies": {
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
     "gh-pages": "^2.1.1",
     "highlight.js": "^9.15.10",
     "json5": "^2.1.1",
@@ -11,11 +13,8 @@
     "pug": "^2.0.4"
   },
   "scripts": {
-    "start:client": "parcel src/client/*.pug --out-dir dist",
-    "start:docs": "node renderDocs.js --watch",
-    "build": "npm run build:client && npm run build:docs",
-    "build:client": "parcel build src/client/*.pug --out-dir build --public-url ./",
-    "build:docs": "node renderDocs.js",
+    "start": "node bundle.js",
+    "build": "node bundle.js --prod",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
