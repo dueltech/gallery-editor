@@ -29,6 +29,9 @@ const watchColorPicker = (el) => {
   colorField.addEventListener('input', ({ target }) => {
     textField.value = target.value;
   });
+  if (textField.value) {
+    colorField.value = textField.value; // text field could have a default value
+  }
 };
 
 const watchEntriesSelect = (el) => {
