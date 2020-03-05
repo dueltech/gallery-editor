@@ -1,10 +1,10 @@
 import json5 from 'json5';
+import chroma from 'chroma-js';
 import createLayoutRule from './components/layoutRule';
 import createLayoutStyle from './components/layoutStyle';
 import generateConfig from './utils/generateConfig';
 import importConfig from './utils/importConfig';
 import createSnippet from './utils/createSnippet';
-import transformHexColor from './utils/transformHexColor';
 
 const updateGalleryIdControls = () => {
   const select = document.getElementById('gallery-identifier');
@@ -24,7 +24,7 @@ const watchColorPicker = (el) => {
   const textField = el.querySelector('input:not([type="color"])');
   const colorField = el.querySelector('input[type="color"]');
   textField.addEventListener('input', ({ target }) => {
-    colorField.value = transformHexColor(target.value);
+    colorField.value = chroma(target.value);
   });
   colorField.addEventListener('input', ({ target }) => {
     textField.value = target.value;

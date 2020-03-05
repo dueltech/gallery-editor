@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Configure the Duel gallery settings in a convenient editor.",
   "dependencies": {
+    "chroma-js": "^2.1.0",
     "express": "^4.17.1",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.1.1",

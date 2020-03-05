@@ -1,6 +1,7 @@
+import chroma from 'chroma-js';
+
 import createLayoutRule from '../components/layoutRule';
 import createLayoutStyle from '../components/layoutStyle';
-import transformHexColor from './transformHexColor';
 
 export default (config) => {
   // Gallery identifier
@@ -48,7 +49,7 @@ export default (config) => {
   colors.forEach(({ name, defaultValue = '' }) => {
     const val = config[name] || defaultValue;
     document.getElementById(name).value = val;
-    document.getElementById(`${name}Picker`).value = transformHexColor(val);
+    document.getElementById(`${name}Picker`).value = chroma(val);
   });
 
   // Misc. display
