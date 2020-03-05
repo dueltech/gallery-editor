@@ -21,6 +21,10 @@
 * Type: **String**  →  `‘created’` | `‘created-desc’` | `‘rank’` | `‘random’`
 * Default: `'rank’`
 
+**sortDisplay:** Which sort controls should be displayed?
+
+* Type: **String**  →  Values for `sort` separated by whitespace, e.g. `'created created-desc'`
+
 
 ## Color settings
 
