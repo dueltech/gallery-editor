@@ -124,6 +124,7 @@ textarea {
   line-height: 1.3;
   font-size: .85rem;
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 button {
