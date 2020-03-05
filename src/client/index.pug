@@ -14,6 +14,18 @@ head
   h2= title
   button#import-config Import config
 main
+  mixin checkbox(name, label, checked=false)
+    .checkbox
+      input(type='checkbox' id=name name=name checked=checked)
+      label(for=name)= label
+
+  mixin colorPicker(name, label, defaultValue='')
+    .input
+      label(for=name)= label
+      .grouped.color-picker
+        input(type='text' placeholder='auto' id=name name=name value=defaultValue)
+        input(type='color' id=`${name}Picker`)
+
   article.columns
     section
       .input
@@ -46,9 +58,7 @@ main
           #entries-count.grouped
             label(for='count') Count
             input(type='number' name='count' value='1')
-        .checkbox
-          input#campaignOnly(type='checkbox' name='campaignOnly' checked='')
-          label(for='campaignOnly') Include relevant product entries
+        +checkbox('campaignOnly', 'Include relevant product entries', true)
       .input
         label(for='sort') Sort order
         .select-wrapper
@@ -60,52 +70,24 @@ main
       .input
         label Displayed sort controls
         #sort-controls.grouped.checkboxes
-          .checkbox
-            input(type='checkbox' name='rank')
-            label(for='rank') Most popular
-          .checkbox
-            input(type='checkbox' name='created' checked)
-            label(for='created') Newest first
-          .checkbox
-            input(type='checkbox' name='created-desc' checked)
-            label(for='created-desc') Oldest first
-          .checkbox
-            input(type='checkbox' name='random')
-            label(for='random') Random
+          +checkbox('rank', 'Most popular')
+          +checkbox('created', 'Newest first', true)
+          +checkbox('created-desc', 'Oldest first', true)
+          +checkbox('random', 'Random')
       .input
         label(for='displayMin') Minimum entries before display
         input#displayMin(type='number' name='displayMin' placeholder='1')
     section
-      .input
-        label(for='color') Foreground color
-        .grouped.color-picker
-          input#color(type='text' placeholder='auto' name='color' value='#222222')
-          input#colorPicker(type='color')
-      .input
-        label(for='bgColor') Background color
-        .grouped.color-picker
-          input#bgColor(type='text' placeholder='auto' name='bgColor' value="#ffffff")
-          input#bgColorPicker(type='color')
-      .input
-        label(for='thumbColor') Thumbnail overlay color
-        .grouped.color-picker
-          input#thumbColor(type='text' placeholder='auto' name='thumbColor')
-          input#thumbColorPicker(type='color')
+      +colorPicker('color', 'Foreground color', '#222222')
+      +colorPicker('bgColor', 'Background color', '#ffffff')
+      +colorPicker('thumbColor', 'Thumbnail overlay color')
       .input
         label(for='misc-display') Misc. display
         .grouped.checkboxes
-          .checkbox
-            input#hideAtrributions(type='checkbox' name='hideAtrributions')
-            label(for='hideAtrributions') Hide attributions
-          .checkbox
-            input#hideDates(type='checkbox' name='hideDates')
-            label(for='hideDates') Hide dates
-          .checkbox
-            input#testimonialPreview(type='checkbox' name='testimonialPreview')
-            label(for='testimonialPreview') Preview testimonials
-          .checkbox
-            input#seamless(type='checkbox' name='seamless')
-            label(for='seamless') Seamless
+          +checkbox('hideAttributions', 'Hide attributions')
+          +checkbox('hideDates', 'Hide dates')
+          +checkbox('testimonialPreview', 'Preview testimonials')
+          +checkbox('seamless', 'Seamless')
   article.columns
     section
       .input

@@ -52,7 +52,7 @@ export default (config) => {
   });
 
   // Misc. display
-  const miscDisplayOptions = ['hideAtrributions', 'hideDates', 'testimonialPreview', 'seamless'];
+  const miscDisplayOptions = ['hideAttributions', 'hideDates', 'testimonialPreview', 'seamless'];
   miscDisplayOptions.forEach((option) => {
     document.getElementById(option).checked = config[option];
   });

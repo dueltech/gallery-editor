@@ -55,7 +55,7 @@ export default () => {
   });
 
   // Misc. display
-  const miscDisplayOptions = ['hideAtrributions', 'hideDates', 'testimonialPreview', 'seamless'];
+  const miscDisplayOptions = ['hideAttributions', 'hideDates', 'testimonialPreview', 'seamless'];
   miscDisplayOptions.forEach((option) => {
     const checkbox = document.getElementById(option);
     if (checkbox.checked) {
