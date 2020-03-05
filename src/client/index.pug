@@ -40,7 +40,6 @@ main
         .grouped
           .select-wrapper
             select#entries(name='entries')
-              option(value='none') No selection
               option(value='dynamic') Dynamic feed (with load more)
               option(value='topRanked') Fixed (top ranked)
               option(value='fixed') Fixed
@@ -54,7 +53,6 @@ main
         label(for='sort') Sort order
         .select-wrapper
           select#sort(name='sort')
-            option(value='none') No selection
             option(value='rank') Most popular
             option(value='created') Newest first
             option(value='created-desc') Oldest first
@@ -66,10 +64,10 @@ main
             input(type='checkbox' name='rank')
             label(for='rank') Most popular
           .checkbox
-            input(type='checkbox' name='created')
+            input(type='checkbox' name='created' checked)
             label(for='created') Newest first
           .checkbox
-            input(type='checkbox' name='created-desc')
+            input(type='checkbox' name='created-desc' checked)
             label(for='created-desc') Oldest first
           .checkbox
             input(type='checkbox' name='random')
@@ -81,12 +79,12 @@ main
       .input
         label(for='color') Foreground color
         .grouped.color-picker
-          input#color(type='text' placeholder='auto' name='color')
+          input#color(type='text' placeholder='auto' name='color' value='#222222')
           input#colorPicker(type='color')
       .input
         label(for='bgColor') Background color
         .grouped.color-picker
-          input#bgColor(type='text' placeholder='auto' name='bgColor')
+          input#bgColor(type='text' placeholder='auto' name='bgColor' value="#ffffff")
           input#bgColorPicker(type='color')
       .input
         label(for='thumbColor') Thumbnail overlay color
@@ -117,7 +115,6 @@ main
             label(for='layoutStyle') Style
             .select-wrapper
               select#layoutStyle(name='layoutStyle')
-                option(value='none' data-show='') No selection
                 option(value='grid' data-show='rows columns') Grid
                 option(value='list' data-show='rows') List
                 option(value='carousel' data-show='columns') Carousel

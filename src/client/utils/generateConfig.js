@@ -27,7 +27,7 @@ export default () => {
 
   // Sort order
   const sort = document.getElementById('sort');
-  if (sort.value && sort.value !== 'none') {
+  if (sort.value && sort.value !== 'rank') {
     config.sort = sort.value;
   }
 
@@ -105,12 +105,11 @@ export default () => {
 
   // Layout styles
   const layoutStyle = document.getElementById('layoutStyle').value;
-  if (!layoutStyle || layoutStyle === 'none') {
-    // no configured layout
-    return config;
-  } if (layoutStyle !== 'dynamic') {
+  if (layoutStyle !== 'dynamic') {
     // layout style is static
-    config.layoutStyle = layoutStyle;
+    if (layoutStyle !== 'grid') {
+      config.layoutStyle = layoutStyle;
+    }
     const rows = document.getElementById('default-rows');
     const columns = document.getElementById('default-columns');
     if (rows.value) {

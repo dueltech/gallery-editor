@@ -17,7 +17,7 @@ export default (config) => {
   // Displayed entries
   const entryValues = ['topRanked', 'fixed'];
   const entryValue = Object.keys(config).find(key => entryValues.includes(key));
-  document.getElementById('entries').value = entryValue || 'none';
+  document.getElementById('entries').value = entryValue || 'dynamic';
   if (entryValue) {
     const countInput = document.querySelector('#entries-count input');
     countInput.value = config[entryValue];
@@ -27,10 +27,10 @@ export default (config) => {
   document.getElementById('campaignOnly').checked = !config.campaignOnly;
 
   // Sort order
-  document.getElementById('sort').value = config.sort || 'none';
+  document.getElementById('sort').value = config.sort || 'rank';
 
   // Displayed sort controls
-  const split = config.sortDisplay ? config.sortDisplay.split(' ') : [];
+  const split = config.sortDisplay ? config.sortDisplay.split(' ') : ['created', 'created-desc'];
   const sortControls = document.querySelectorAll('#sort-controls input');
   sortControls.forEach((checkbox) => {
     checkbox.checked = split.includes(checkbox.name);
@@ -40,10 +40,15 @@ export default (config) => {
   document.getElementById('displayMin').value = config.displayMin || '';
 
   // Colors
-  const colors = ['color', 'bgColor', 'thumbColor'];
-  colors.forEach((color) => {
-    document.getElementById(color).value = config[color] || '';
-    document.getElementById(`${color}Picker`).value = transformHexColor(config[color] || '');
+  const colors = [
+    { name: 'color', defaultValue: '#222222' },
+    { name: 'bgColor', defaultValue: '#ffffff' },
+    { name: 'thumbColor' },
+  ];
+  colors.forEach(({ name, defaultValue = '' }) => {
+    const val = config[name] || defaultValue;
+    document.getElementById(name).value = val;
+    document.getElementById(`${name}Picker`).value = transformHexColor(val);
   });
 
   // Misc. display
@@ -61,7 +66,7 @@ export default (config) => {
 
   // Layout styles
   const layoutStyleValue = Array.isArray(config.layoutStyle) ? 'dynamic' : config.layoutStyle;
-  document.getElementById('layoutStyle').value = layoutStyleValue || 'none';
+  document.getElementById('layoutStyle').value = layoutStyleValue || 'grid';
   document.getElementById('default-rows').value = config.rows || '';
   document.getElementById('default-columns').value = config.columns || '';
   if (layoutStyleValue === 'dynamic') {
