@@ -129,16 +129,26 @@ const addImportListeners = () => {
     }
   });
   document.querySelector('#import-modal button').addEventListener('click', () => {
-    const configString = document.querySelector('#import-modal textarea').value;
+    let configString = document.querySelector('#import-modal textarea').value;
     const errorContainer = document.querySelector('#import-modal .error');
+
     try {
+      const matchSnippet = configString.match(new RegExp('DuelVision\\(({.*})\\)', 's'));
+      if (matchSnippet && matchSnippet.length >= 2) {
+        configString = matchSnippet[1];
+      }
+
       const config = json5.parse(configString);
+      console.log(config);
+
       errorContainer.style.display = 'none';
       errorContainer.innerText = '';
+
       importConfig(config);
       updateGalleryIdControls();
       updateLayoutDisplays(document.getElementById('layoutStyle'));
       checkTabs();
+
       importModal.style.display = 'none';
     } catch (error) {
       errorContainer.style.display = 'block';

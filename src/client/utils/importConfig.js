@@ -49,7 +49,9 @@ export default (config) => {
   colors.forEach(({ name, defaultValue = '' }) => {
     const val = config[name] || defaultValue;
     document.getElementById(name).value = val;
-    document.getElementById(`${name}Picker`).value = chroma(val);
+    if (val) {
+      document.getElementById(`${name}Picker`).value = chroma(val);
+    }
   });
 
   // Misc. display
