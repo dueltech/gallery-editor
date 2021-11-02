@@ -46,7 +46,7 @@ export default () => {
   }
 
   // Colors
-  const colors = ['color', 'bgColor', 'thumbColor'];
+  const colors = ['color', 'bgColor', 'thumbColor', 'thumbBgColor'];
   colors.forEach((color) => {
     const inputEl = document.getElementById(color);
     if (inputEl.value) {

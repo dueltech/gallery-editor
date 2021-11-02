@@ -45,6 +45,7 @@ export default (config) => {
     { name: 'color', defaultValue: '#222222' },
     { name: 'bgColor', defaultValue: '#ffffff' },
     { name: 'thumbColor' },
+    { name: 'thumbBgColor' },
   ];
   colors.forEach(({ name, defaultValue = '' }) => {
     const val = config[name] || defaultValue;

@@ -139,7 +139,6 @@ const addImportListeners = () => {
       }
 
       const config = json5.parse(configString);
-      console.log(config);
 
       errorContainer.style.display = 'none';
       errorContainer.innerText = '';
@@ -183,7 +182,7 @@ const showPreview = () => {
   const config = generateConfig();
   if (!config.id && !config.product) {
     // example gallery
-    config.id = window.DUEL_DEV_LOADER ? '5a37ad3e71fd32000475a9d0' : '5cc9da7bf0b9d2002d136acb';
+    config.id = window.DUEL_DEV_LOADER ? '5a37ad3e71fd32000475a9d0' : '5f2a823982a173002fa11f28';
   }
   // eslint-disable-next-line no-undef
   DuelVision.load(config);
