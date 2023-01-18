@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 
 marked.setOptions({
-  highlight: (code, lang) => hljs.highlight(lang, code).value,
+  highlight: (code, language) => hljs.highlight(code, { language }).value,
 });
 
 const isProd = process.argv.slice(2).includes('--prod');
@@ -30,7 +30,7 @@ let template = pug.compileFile('src/docs/template.pug');
 
 const compileFile = async (file) => {
   const data = await fs.readFile(file, 'utf8');
-  const html = template({ content: marked(data) });
+  const html = template({ content: marked.parse(data) });
   const filename = file.split('/').pop();
   return fs.writeFile(`${outDir}/docs/${filename}`.replace('.md', '.html'), html);
 };
